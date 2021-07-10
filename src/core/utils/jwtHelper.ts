@@ -43,11 +43,4 @@ export class JWTHelper {
 
     return data._id;
   }
-
-  static isUserDefault(username: string, password: string): boolean {
-    return (
-      Environment.getSettings().userDefault === username &&
-      Environment.getSettings().passDefault === password
-    );
-  }
 }

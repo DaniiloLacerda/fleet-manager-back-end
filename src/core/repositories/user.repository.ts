@@ -1,6 +1,6 @@
 import { IUser } from '@interfaces/models/user.interface';
 import { BaseRepository } from './base/base.repository';
-import { User } from './schemas/userSchema';
+import { User } from './schemas/user.schema';
 
 export class UserRepository extends BaseRepository<IUser> {
   constructor() {

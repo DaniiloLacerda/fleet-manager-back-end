@@ -1,7 +1,6 @@
 import { Database } from '@config/db';
-import { Environment } from '@config/environment';
 import { UserFactory } from '@factories/user.factory';
-import { authValidator } from '@middlewares/validations/authValidator';
+import { authValidator } from '@middlewares/validations/auth.validator';
 import { handlerValidator } from '@middlewares/validations/base/handlerValidator';
 import { JWTHelper } from '@utils/jwtHelper';
 import { Password } from '@utils/password';
@@ -27,13 +26,6 @@ export const token = handlerValidator({
       });
 
       if (!user) {
-        if (JWTHelper.isUserDefault(username, password)) {
-          await userService.create({ body: { name: 'userDefault', username, password } });
-          return StatusHandler.handlerSuccess({
-            statusCode: StatusCodes.OK,
-            data: JWTHelper.encode({ username, _id: 'idUserDefault' })
-          });
-        }
         return StatusHandler.handleError({
           statusCode: StatusCodes.NOT_FOUND,
           data: 'Dados de login inválidos'
@@ -41,7 +33,6 @@ export const token = handlerValidator({
       }
 
       const { password: pwd, ...dataUser } = user.toJSON();
-
       return StatusHandler.handlerSuccess({
         statusCode: StatusCodes.OK,
         data: JWTHelper.encode(dataUser)

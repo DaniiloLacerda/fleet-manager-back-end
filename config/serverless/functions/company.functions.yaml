@@ -1,0 +1,8 @@
+companyCreate:
+  handler: src/functions/company.functions.create
+  timeout: 30
+  events:
+    - http:
+        method: POST
+        path: company
+        cors: true
