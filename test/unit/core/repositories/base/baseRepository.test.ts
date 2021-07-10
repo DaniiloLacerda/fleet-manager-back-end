@@ -1,4 +1,4 @@
-import { User } from '@repositories/schemas/userSchema';
+import { User } from '@repositories/schemas/user.schema';
 import { UserRepository } from '@repositories/user.repository';
 
 describe('Base Repository', () => {

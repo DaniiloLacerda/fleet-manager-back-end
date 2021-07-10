@@ -5,6 +5,7 @@ export interface IUser extends Document {
   name: string;
   username: string;
   password: string;
+  companyId: string;
 }
 
 export interface UserModel extends Model<IUser> {}

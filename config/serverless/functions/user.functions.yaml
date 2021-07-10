@@ -1,0 +1,35 @@
+userCreate:
+  handler: src/functions/userFunctions.create
+  timeout: 30
+  events:
+    - http:
+        method: POST
+        path: user
+        cors: true
+        authorizer:
+          name: authorizer
+          resultTtlInSeconds: 0
+
+userUpdate:
+  handler: src/functions/userFunctions.update
+  timeout: 30
+  events:
+    - http:
+        method: PUt
+        path: user/{id}
+        cors: true
+        authorizer:
+          name: authorizer
+          resultTtlInSeconds: 0
+
+userChangePassword:
+  handler: src/functions/userFunctions.changePassword
+  timeout: 30
+  events:
+    - http:
+        method: POST
+        path: user/{id}/changePassword
+        cors: true
+        authorizer:
+          name: authorizer
+          resultTtlInSeconds: 0

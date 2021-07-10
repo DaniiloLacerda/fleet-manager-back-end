@@ -1,4 +1,4 @@
-import { Schema, model, Model, models } from 'mongoose';
+import { Schema, model, Model, models, SchemaType } from 'mongoose';
 import { IUser } from 'src/core/interfaces/models/user.interface';
 
 export class User {
@@ -25,6 +25,11 @@ export class User {
         type: String,
         required: true,
         unique: false
+      },
+      companyId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+        required: true
       }
     },
     {
